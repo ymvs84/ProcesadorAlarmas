@@ -1,3 +1,11 @@
+"""
+=============================================================================
+ Proyecto: Pipeline de Automatización de Alarmas Orange
+ Autor: Yago Menéndez (ymvs84)
+ Descripción: Orquestador end-to-end de ingesta, respaldo y consolidación.
+=============================================================================
+"""
+
 import os
 import glob
 import pandas as pd

@@ -1,0 +1,24 @@
+# Entorno virtual y caché
+.venv/
+__pycache__/
+
+# Credenciales y configuraciones sensibles
+auth.json
+.env
+
+# Datos, logs y carpetas secundarias o de pruebas
+data/
+logs/
+archive/
+scripts/
+tests/
+
+# Archivos de configuración raíz que prefieras ocultar
+Dockerfile
+docker-compose.yml
+requirements.txt
+
+# Extensiones de datos
+*.xlsx
+*.csv
+.DS_Store

@@ -1,5 +1,8 @@
 # 🚀 Pipeline Automatizado de Consolidación de Alarmas (Orange)
 
+> **Autor:** Yago Menéndez ([@ymvs84](https://github.com/ymvs84))
+> **Rol:** Cloud Operations & Backend Engineer | JCDecaux
+
 Sistema de ingeniería de datos diseñado para la ingesta, procesamiento, consolidación y publicación automatizada de alarmas de dispositivos de red (Orange). El pipeline opera de forma totalmente desatendida, eliminando la intervención manual y garantizando la trazabilidad de los datos.
 
 ---
