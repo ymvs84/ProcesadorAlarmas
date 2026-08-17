@@ -11,6 +11,10 @@ import glob
 import pandas as pd
 import re
 import subprocess
+import sys
+
+# Ruta absoluta al ejecutable de Python del entorno virtual (.venv)
+PYTHON_ENV = "/home/yago/proyectos/ProcesadorAlarmas/.venv/bin/python"
 
 def limpiar_numero_estricto(cadena):
     if pd.isna(cadena):
@@ -154,7 +158,7 @@ if __name__ == "__main__":
     # 1. PASO 1: Descargar nuevos correos de Outlook
     print("\n[Paso 1/5] Ejecutando bot de descarga de correos...")
     try:
-        subprocess.run(["python", "src/descargar_alarmas.py"], check=True)
+        subprocess.run([PYTHON_ENV, "src/descargar_alarmas.py"], check=True)
     except subprocess.CalledProcessError as e:
         print(f"❌ Error en el descargador de correos: {e}")
         exit(1)
@@ -162,14 +166,14 @@ if __name__ == "__main__":
     # 2. PASO 2: Respaldar los ficheros CSV históricos en SharePoint
     print("\n[Paso 2/5] Subiendo ficheros de alarmas a la nube (SharePoint)...")
     try:
-        subprocess.run(["python", "src/subir_historicos.py"], check=True)
+        subprocess.run([PYTHON_ENV, "src/subir_historicos.py"], check=True)
     except subprocess.CalledProcessError as e:
         print(f"⚠️ Advertencia: No se pudieron respaldar los históricos: {e}")
 
     # 3. PASO 3: Descargar el Maestro actualizado desde SharePoint
     print("\n[Paso 3/5] Descargando maestro actualizado desde SharePoint...")
     try:
-        subprocess.run(["python", "src/descargar_maestro.py"], check=True)
+        subprocess.run([PYTHON_ENV, "src/descargar_maestro.py"], check=True)
     except subprocess.CalledProcessError as e:
         print(f"⚠️ Advertencia: Falló la descarga del maestro, se usará el local: {e}")
 
@@ -180,7 +184,7 @@ if __name__ == "__main__":
     # 5. PASO 5: Subir el informe final consolidado de vuelta a SharePoint
     print("\n[Paso 5/5] Subiendo informe final consolidado a SharePoint...")
     try:
-        subprocess.run(["python", "src/subir_sharepoint.py"], check=True)
+        subprocess.run([PYTHON_ENV, "src/subir_sharepoint.py"], check=True)
         print("\n✨ ¡PIPELINE EJECUTADO DE PUNTA A PUNTA CON ÉXITO! ✨")
     except subprocess.CalledProcessError as e:
         print(f"⚠️ Advertencia: No se pudo subir el informe final: {e}")
